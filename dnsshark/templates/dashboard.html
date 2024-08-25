@@ -1,0 +1,18 @@
+<!-- templates/server/dashboard.html -->
+<h1>Dashboard</h1>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="domain" placeholder="Enter domain" required>
+    <select name="action">
+        <option value="allow">Allow</option>
+        <option value="block">Block</option>
+    </select>
+    <button type="submit">Add Rule</button>
+</form>
+
+<h2>Your Rules</h2>
+<ul>
+    {% for rule in rules %}
+    <li>{{ rule.domain }} - {{ rule.action }}</li>
+    {% endfor %}
+</ul>
